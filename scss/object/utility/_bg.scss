@@ -1,0 +1,15 @@
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
+
+/* ==========================================================================
+   Utility - Background
+   ========================================================================== */
+
+/* 背景色 */
+.u-bg-white {
+  background-color: $color-white;
+}
+
+.u-bg-gray {
+  background-color: $color-gray;
+}

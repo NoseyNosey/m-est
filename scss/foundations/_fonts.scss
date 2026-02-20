@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Fonts - Web フォントの定義 (DM Sans / Noto Sans JP)
+   ========================================================================== */
+
+/* ------------------------------
+   DM Sans
+------------------------------ */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../../assets/fonts/DMSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../../assets/fonts/DMSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../../assets/fonts/DMSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------
+   Noto Sans JP
+------------------------------ */
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('../../assets/fonts/NotoSansJP-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('../../assets/fonts/NotoSansJP-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('../../assets/fonts/NotoSansJP-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

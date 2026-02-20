@@ -1,0 +1,20 @@
+@use '../../foundations/variables' as *;
+@use '../../foundations/mixins' as *;
+
+/* ==========================================================================
+   Utility - Text Align
+   ========================================================================== */
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-underline {
+  text-decoration: underline;
+}
+
+@include sp-only {
+  .u-sp-text-center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,203 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+// ==========================================================================
+// Layout Header (.l-header)
+// ==========================================================================
+
+.l-header {
+  background-color: $color-white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  .l-inner {
+    display: flex;
+    justify-content: space-between;
+    @include height-vw(70, 60);
+    @include sp-only {
+      position: relative;
+    }
+  }
+  &__logo {
+    position: relative;
+    @include padding-top-vw(10, 10);
+    @include sp-only {
+      @include padding-left-vw(null, 15);
+    }
+    a {
+      display: block;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      background-color: $color-white;
+      z-index: 1;
+      @include border-radius-vw(36, 36, "bottom-right");
+      @include left-vw(-80, -20);
+      @include width-vw(280, 180);
+      @include height-vw(90, 70);
+    }
+    img {
+      position: relative;
+      z-index: 2;
+      @include width-vw(170, 120);
+    }
+  }
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    @include sp-only {
+      transition: $transition;
+      opacity: 0;
+      pointer-events: all;
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      background-color: $color-red;
+      @include padding-left-vw(null, 20);
+      @include padding-right-vw(null, 20);
+      @include padding-top-vw(null, 50);
+      @include top-vw(null, 60);
+    }
+  }
+  &__nav-list-text {
+    display: flex;
+    @include font-vw(13, 20);
+    @include sp-only {
+      display: block;
+      color: $color-white;
+      font-weight: $font-weight-medium;
+      @include margin-bottom-vw(null, 50);
+    }
+    li {
+      + li {
+        @include margin-left-vw(30, 0);
+        @include sp-only {
+          @include margin-top-vw(null, 25);
+        }
+      }
+    }
+
+    a {
+      @include sp-only {
+        position: relative;
+        display: block;
+      }
+      &::after {
+        @include sp-only {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          background: url(../../assets/images/common/arrow-button-white.svg)
+            no-repeat center / 100%;
+          @include width-vw(null, 28);
+          @include height-vw(null, 28);
+          @include top-vw(null, 6);
+        }
+      }
+    }
+  }
+  &__nav-list-button {
+    display: flex;
+    @include margin-left-vw(30, 0);
+    @include sp-only {
+      justify-content: center;
+    }
+    li {
+      + li {
+        @include margin-left-vw(15, 15);
+      }
+    }
+  }
+
+  &__menu-button {
+    @include sp-only {
+      position: absolute;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      right: 0;
+      top: 0;
+      @include height-vw(null, 60);
+      @include width-vw(null, 60);
+    }
+    .inner {
+      @include sp-only {
+        position: relative;
+        @include width-vw(null, 22);
+        @include height-vw(null, 8);
+      }
+      div {
+        @include sp-only {
+          transition: $transition;
+          position: absolute;
+          right: 0;
+          background-color: $color-red;
+          @include height-vw(null, 1);
+        }
+        &:nth-child(1) {
+          @include sp-only {
+            top: 0;
+            width: 100%;
+          }
+        }
+        &:nth-child(2) {
+          @include sp-only {
+            bottom: 0;
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+
+  &.is-active {
+    .l-header__nav-list {
+      @include sp-only {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+    .c-small-button {
+      @include sp-only {
+        background-color: $color-white;
+        color: $color-red;
+      }
+      &.--search {
+        &::after {
+          @include sp-only {
+            background-image: url(../../assets/images/common/icon-look-red.svg);
+          }
+        }
+      }
+      &.--mail {
+        &::after {
+          @include sp-only {
+            background-image: url(../../assets/images/common/icon-mail-red.svg);
+          }
+        }
+      }
+    }
+    .l-header__menu-button .inner div:nth-child(1) {
+      @include sp-only {
+        transform: rotate(30deg);
+        @include top-vw(null, 5);
+      }
+    }
+    .l-header__menu-button .inner div:nth-child(2) {
+      @include sp-only {
+        width: 100%;
+        transform: rotate(-30deg);
+        @include top-vw(null, 5);
+      }
+    }
+  }
+}

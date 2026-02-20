@@ -1,0 +1,45 @@
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
+
+// ==========================================================================
+// Common Button
+// ==========================================================================
+.c-small-button {
+  background-color: $color-red;
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  @include width-vw(150, 160);
+  @include height-vw(40, 40);
+  @include font-vw(14, 14);
+  @include border-radius-vw(5, 5);
+  @include sp-only {
+    font-weight: $font-weight-medium;
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    content: "";
+    @include right-vw(10, 10);
+    @include width-vw(30, 30);
+    @include height-vw(30, 30);
+  }
+  &.--search {
+    &::after {
+      background: url(../../assets/images/common/icon-look-white.svg) no-repeat
+        center / 100%;
+    }
+    @include padding-right-vw(10, 10);
+  }
+  &.--mail {
+    &::after {
+      background: url(../../assets/images/common/icon-mail-white.svg) no-repeat
+        center / 100%;
+    }
+    @include padding-right-vw(22, 22);
+  }
+}

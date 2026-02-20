@@ -1,0 +1,55 @@
+@use "sass:math";
+
+/* ==========================================================================
+   Variables - プロジェクト全体で使う変数を管理
+   ========================================================================== */
+
+/* 基本のカラーパレット（色ベース） */
+$color-black: #020202;
+$color-gray: #F5F5F5;
+$color-light-gray: #F6F6F6;
+$color-white: #fff;
+$color-red: #B81C22;
+
+/* グラデーション */
+
+/* 透過バージョン（rgba を使う） */
+$color-black-alpha-75: rgba($color-black, 0.75);
+$color-black-alpha-50: rgba($color-black, 0.5);
+$color-black-alpha-25: rgba($color-black, 0.25);
+$color-black-alpha-5: rgba($color-black, 0.05);
+$color-white-alpha-25: rgba($color-white, 0.25);
+
+/* 基本フォント */
+$font-primary: 'DM Sans', 'Noto Sans JP', sans-serif;
+
+/* フォントウェイト */
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+/* フォントサイズ */
+
+/* 行間 */
+
+/* スペーシング */
+$letter-spacing-minus-0_5: -0.05em;
+$letter-spacing-0_5: 0.05em;
+$letter-spacing-1: 0.1em;
+$letter-spacing-2: 0.2em;
+
+$breakpoints: ('sp': 768px,
+  'pc': 769px);
+
+/* コンテナの最大幅 */
+$container-width-sp: 375px;
+$container-width-pc: 1512px;
+$container-width-sm: 800px;
+$container-width-md: 1000px;
+$container-width-lg: 1200px;
+
+/* transition */
+$transition: .25s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+/* ゼロを統一するためのユーティリティ */
+$zero: 0px;
