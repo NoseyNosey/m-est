@@ -1572,6 +1572,11 @@ button.swiper-pagination-bullet {
 }
 @media (max-width: 768px) and (max-width: 768px) {
   .l-header__menu-button {
+    margin-right: 1.3333333333vw;
+  }
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .l-header__menu-button {
     height: 16vw;
   }
 }
@@ -1587,7 +1592,7 @@ button.swiper-pagination-bullet {
 }
 @media (max-width: 768px) and (max-width: 768px) {
   .l-header__menu-button .inner {
-    width: 5.8666666667vw;
+    width: 9.6vw;
   }
 }
 @media (max-width: 768px) and (max-width: 768px) {

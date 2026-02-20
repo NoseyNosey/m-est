@@ -126,13 +126,14 @@
       align-items: center;
       right: 0;
       top: 0;
+      @include margin-right-vw(null, 5);
       @include height-vw(null, 60);
       @include width-vw(null, 60);
     }
     .inner {
       @include sp-only {
         position: relative;
-        @include width-vw(null, 22);
+        @include width-vw(null, 36);
         @include height-vw(null, 8);
       }
       div {
