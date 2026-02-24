@@ -4,4 +4,511 @@
 // ==========================================================================
 // Home
 // ==========================================================================
+.p-home-mv {
+  background: url(../../assets/images/home/mv-image.png) no-repeat bottom
+    center / 100%;
+  position: relative;
+  @include sp-only {
+    background-image: url(../../assets/images/home/mv-image-sp.png);
+  }
+  &::after {
+    content: "";
+    display: block;
+    background: url(../../assets/images/home/mv-triangle.svg) no-repeat center /
+      100%;
+    position: absolute;
+    left: 0;
+    @include bottom-vw(-30, -20);
+    @include width-vw(340, 200);
+    @include height-vw(300, 176);
+    @include sp-only {
+    }
+  }
+  .l-inner {
+    position: relative;
+    @include height-vw(790, 672);
+    @include sp-only {
+    }
+  }
+  &__title-wrap {
+    position: absolute;
+    z-index: 1;
+    letter-spacing: $letter-spacing-1;
+    @include left-vw(80, 20);
+    @include bottom-vw(40, 20);
+    @include sp-only {
+    }
+  }
+  &__title {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    line-height: 1.5;
+    @include font-vw(70, 36);
+    @include margin-bottom-vw(10, 5);
+    @include sp-only {
+    }
+  }
+  &__subtitle-en {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    @include font-vw(20, 15);
+    @include margin-bottom-vw(10, 6);
+    @include sp-only {
+    }
+  }
+  &__subtitle-jp {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    @include margin-bottom-vw(25, 10);
+    @include font-vw(20, 20);
+    @include sp-only {
+      line-height: 1.6;
+    }
+    .lg {
+      @include font-vw(30, 28);
+      @include sp-only {
+      }
+    }
+    .margin {
+      @include sp-only {
+        @include margin-left-vw(null, -11);
+      }
+    }
+  }
+  &__description {
+    color: $color-white;
+    line-height: 2.2;
+    @include font-vw(14, 13);
+    @include sp-only {
+    }
+  }
+}
 
+.p-home-intro {
+  position: relative;
+  .l-inner {
+    @include padding-top-vw(130, 80);
+    @include padding-bottom-vw(120, 80);
+  }
+  &__description {
+    line-height: 3;
+    font-weight: $font-weight-medium;
+    margin-left: auto;
+    margin-right: auto;
+    @include margin-bottom-vw(60, 40);
+    @include font-vw(15, 14);
+    @include width-vw(870, null);
+    @include sp-only {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    margin-left: auto;
+    margin-right: auto;
+    @include width-vw(870, null);
+    @include sp-only {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(../../assets/images/common/deco-colorful-right.svg)
+      no-repeat center / 100% 100%;
+    @include width-vw(330, 220);
+    @include height-vw(330, 220);
+    @include sp-only {
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../../assets/images/common/deco-colorful-left.svg) no-repeat
+      center / 100%;
+    @include width-vw(330, 200);
+    @include height-vw(330, 200);
+    @include sp-only {
+    }
+  }
+}
+
+.p-home-business {
+  .l-inner {
+    @include padding-top-vw(120, 60);
+    @include padding-bottom-vw(120, 60);
+  }
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include margin-bottom-vw(65, 50);
+    @include sp-only {
+      display: block;
+    }
+    li + li {
+      position: relative;
+      @include sp-only {
+        @include margin-top-vw(null, 50);
+      }
+      &::before {
+        @include pc-only {
+          content: "";
+          display: block;
+          background-color: $color-white;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          @include left-vw(-80, null);
+          @include width-vw(1, 1);
+          @include height-vw(94, null);
+        }
+      }
+    }
+  }
+  &__list-item-img {
+    display: flex;
+    justify-content: center;
+    @include margin-bottom-vw(10, 10);
+    @include sp-only {
+    }
+    img {
+      @include width-vw(150, 150);
+      @include sp-only {
+      }
+    }
+  }
+  &__list-item-title {
+    text-align: center;
+    color: $color-white;
+    @include margin-bottom-vw(20, 20);
+    @include sp-only {
+    }
+    .en {
+      display: block;
+      font-weight: $font-weight-bold;
+      @include font-vw(24, 18);
+      @include sp-only {
+      }
+    }
+    .jp {
+      display: block;
+      font-weight: $font-weight-bold;
+      @include font-vw(11, 11);
+      @include sp-only {
+      }
+    }
+  }
+
+  &__list-item-description {
+    text-align: center;
+    color: $color-white;
+    line-height: 2.3;
+    @include font-vw(15, 13);
+    @include sp-only {
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    @include sp-only {
+    }
+  }
+}
+
+.p-home-scale {
+  .l-inner {
+    @include padding-top-vw(120, 60);
+    @include padding-bottom-vw(120, 60);
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    @include padding-left-vw(60, 0);
+    @include padding-right-vw(60, 0);
+    @include sp-only {
+      display: block;
+    }
+  }
+  li {
+    @include width-vw(300, null);
+    @include sp-only {
+      width: 100%;
+    }
+    + li {
+      @include sp-only {
+        @include margin-top-vw(null, 40);
+      }
+    }
+  }
+  &__list-item-title {
+    font-weight: $font-weight-bold;
+    text-align: center;
+    position: relative;
+    @include margin-bottom-vw(10, 10);
+    @include font-vw(24, 20);
+    @include sp-only {
+    }
+    &::after {
+      content: "";
+      display: block;
+      background-color: $color-black;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      @include height-vw(1, 1);
+      @include sp-only {
+        width: 90%;
+      }
+    }
+  }
+  &__list-item-img {
+    display: flex;
+    justify-content: center;
+    @include sp-only {
+    }
+    img {
+      @include width-vw(220, 220);
+    }
+  }
+  &__list-item-texts {
+    text-align: center;
+    line-height: 1;
+    @include sp-only {
+    }
+    span {
+      display: inline-block;
+    }
+    .text01 {
+      font-weight: $font-weight-bold;
+      @include margin-bottom-vw(4, 4);
+      @include font-vw(20, 18);
+    }
+    .text02 {
+      font-weight: $font-weight-bold;
+      @include font-vw(26, 24);
+    }
+    .text03 {
+      font-weight: $font-weight-bold;
+      @include font-vw(17, 15);
+      @include margin-top-vw(12, 12);
+    }
+    .text04 {
+      @include font-vw(12, 10);
+      @include margin-top-vw(12, 12);
+    }
+    .red {
+      font-weight: $font-weight-bold;
+      color: $color-red;
+      @include font-vw(43, 38);
+      @include margin-bottom-vw(4, 4);
+    }
+  }
+}
+
+.p-home-project {
+  @include margin-top-vw(100, 60);
+  @include padding-bottom-vw(120, 60);
+
+  &__title {
+    position: relative;
+    @include margin-bottom-vw(80, 40);
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: url(../../assets/images/common/deco-geometry.svg) no-repeat
+        center / 100%;
+      @include width-vw(450, 300);
+      @include height-vw(250, 165);
+      @include top-vw(-80, -60);
+    }
+    img {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+.p-home-partners {
+  background-color: $color-black;
+  @include padding-top-vw(120, 60);
+  @include padding-bottom-vw(120, 60);
+  .l-inner {
+  }
+}
+
+.p-sustainability {
+  @include padding-top-vw(210, 120);
+  @include padding-bottom-vw(180, 80);
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: url(../../assets/images/common/deco-geometry.svg) no-repeat
+      center / 100%;
+    transform: rotate(180deg);
+    @include width-vw(450, 300);
+    @include height-vw(250, 165);
+    @include top-vw(120, 50);
+    @include left-vw(100, 0);
+  }
+
+  &__block {
+    z-index: 1;
+    position: relative;
+    background: url(../../assets/images/home/sustainability-image.png) no-repeat
+      center / cover;
+    border-right: 0 !important;
+    @include padding-top-vw(100, 80);
+    @include padding-bottom-vw(80, 35);
+    @include padding-left-vw(70, 30);
+    @include margin-left-vw(156, 20);
+    @include border-vw(1, 1, solid, $color-black);
+    @include border-radius-vw(40, 20, top-left);
+    @include border-radius-vw(40, 20, bottom-left);
+    &::before {
+      content: "";
+      display: block;
+      background-color: $color-white;
+      position: absolute;
+      z-index: 1;
+      @include top-vw(-1, -1);
+      @include left-vw(50, 20);
+      @include width-vw(490, 300);
+      @include height-vw(1, 1);
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    @include top-vw(-30, -20);
+    @include margin-bottom-vw(40, 20);
+    .en {
+      display: block;
+      @include margin-bottom-vw(8, 8);
+      @include font-vw(62, 40);
+    }
+    .jp {
+      display: block;
+      @include font-vw(18, 14);
+    }
+  }
+
+  &__subtitle {
+    font-weight: $font-weight-bold;
+    @include font-vw(30, 24);
+    @include margin-bottom-vw(15, 15);
+  }
+
+  &__description {
+    line-height: 2.4;
+    @include font-vw(15, 13);
+    @include margin-bottom-vw(50, 30);
+    span {
+      font-weight: $font-weight-bold;
+      @include font-vw(25, 17);
+    }
+  }
+}
+
+.p-recruit {
+  @include padding-bottom-vw(180, 180);
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../../assets/images/home/text-recruit.svg) no-repeat center
+      center/ 100%;
+    @include height-vw(280, 100);
+    @include margin-bottom-vw(100, 30);
+    @include sp-only {
+      background-image: url(../../assets/images/home/text-recruit-sp.svg);
+    }
+    .inner {
+      text-align: center;
+      display: inline-block;
+      line-height: 1;
+    }
+    .en {
+      display: inline-block;
+      background-color: $color-gray;
+      font-weight: $font-weight-bold;
+      @include font-vw(62, 40);
+      @include margin-bottom-vw(15, 8);
+    }
+    .jp {
+      display: inline-block;
+      background-color: $color-gray;
+      font-weight: $font-weight-bold;
+      @include font-vw(18, 14);
+    }
+  }
+  &__subtitle {
+    font-weight: $font-weight-bold;
+    display: inline-block;
+    @include margin-bottom-vw(35, 30);
+    @include border-bottom-vw(1, 1, solid, $color-black);
+    @include font-vw(30, 22);
+    @include padding-left-vw(80, 20);
+  }
+  &__description {
+    line-height: 2.6;
+    @include margin-left-vw(130, 20);
+    @include font-vw(15, 13);
+    @include margin-bottom-vw(50, 30);
+    span {
+      display: inline-block;
+      font-weight: $font-weight-bold;
+      @include font-vw(22, 17);
+      @include margin-bottom-vw(20, 20);
+      @include sp-only {
+        line-height: 2;
+      }
+    }
+  }
+
+  &__button {
+    @include margin-left-vw(130, 20);
+    @include sp-only {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+  }
+
+  &__catch {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @include width-vw(830, 350);
+  }
+}
+
+
+
+
+// ==========================================================================
+// Company
+// ==========================================================================

@@ -1,0 +1,157 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+/* ==========================================================================
+   Layout - Slider
+   ========================================================================== */
+
+.l-slider-container {
+  width: 100vw;
+  overflow: hidden;
+  @include padding-left-vw(156, 30);
+  @include padding-right-vw(156, 20);
+}
+
+.l-slider {
+  @include padding-top-vw(50, 30);
+
+  .swiper-slide {
+    // li から .swiper-slide に変更
+    position: relative;
+    background-color: $color-white;
+    @include width-vw(520, 320);
+    @include border-radius-vw(20, 10);
+    @include border-vw(1, 1, solid, $color-red);
+    @include padding-vw(20, 20, 60, 20, 0, 20, 30, 20);
+
+    // JSの spaceBetween ではなく、CSS側でマージンを取ります
+    @include margin-right-vw(52, 30);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include sp-only {
+      @include height-vw(null, 540);
+    }
+  }
+
+  &__flag {
+    position: absolute;
+    @include top-vw(-50, -30);
+    @include left-vw(-30, -25);
+    img {
+      @include width-vw(120, 80);
+    }
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    img {
+      @include width-vw(350, null);
+      @include sp-only {
+        width: 100%;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: $font-weight-bold;
+    line-height: 2;
+    @include margin-bottom-vw(10, 10);
+    @include font-vw(24, 18);
+    @include sp-only {
+      @include margin-top-vw(null, -30);
+    }
+  }
+
+  &__description {
+    line-height: 2.4;
+    text-align: center;
+    @include font-vw(15, 12);
+  }
+
+  &__pagenation {
+    display: flex;
+    justify-content: flex-start;
+    position: static; // Swiperデフォルトの absolute を解除
+    @include margin-top-vw(15, 15);
+
+    // Swiperが自動生成する <span> タグに対するスタイル
+    .swiper-pagination-bullet {
+      background-color: $color-white;
+      opacity: 1; // デフォルトの半透明を解除
+      @include width-vw(16, 16);
+      @include height-vw(16, 16);
+      @include border-radius-vw(20, 20);
+      @include border-vw(1, 1, solid, $color-red);
+      @include margin-right-vw(10, 10, ture);
+
+      // アクティブ時のスタイル
+      &-active {
+        background-color: $color-yellow;
+      }
+    }
+  }
+}
+
+
+
+.l-partners-slider {
+  overflow: hidden; // ずらした分が画面外に出るため、はみ出しを隠す
+
+  &__row {
+    display: block; // FlexboxはSwiperが制御するためブロック要素に変更
+
+    + .l-partners-slider__row {
+      @include margin-top-vw(30, 15);
+    }
+
+    // --- 魔法のループ: 行が増えるごとに位置をずらす ---
+    // 1行目はそのまま、2行目は-5vw、3行目は-10vw…と自動でずらします
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        $shift: ($i - 1) *
+          5vw; // ズラす幅（数値を変更するとズレ具合が変わります）
+        margin-left: -$shift;
+        // ずらした分だけ右側に空白ができないよう、幅を画面幅以上に広げます
+        width: calc(100vw + #{$shift});
+        @include sp-only {
+          $shift: ($i - 1) * 15vw; // ズラす幅（数値を変更するとズレ具合が変わります）
+          margin-left: -$shift;
+          // ずらした分だけ右側に空白ができないよう、幅を画面幅以上に広げます
+          width: calc(100vw + #{$shift});
+        }
+      }
+    }
+
+    // スライダーをカクつかせず、一定の速度で滑らかに流し続けるための必須設定
+    .swiper-wrapper {
+      transition-timing-function: linear !important;
+    }
+  }
+
+  .swiper-slide {
+    width: auto; // Swiperが画像幅を正しく計算できるようにする
+    @include width-vw(200, 140);
+
+    // 兄弟要素(+ div)のmargin-leftではなく、各スライドのmargin-rightで余白を取ります
+    // ※Swiperのループ機能と相性を良くするため
+    @include margin-right-vw(30, 15);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__note {
+    color: $color-white;
+    text-align: right;
+    @include margin-right-vw(15, 15);
+    @include margin-top-vw(15, 15);
+    @include font-vw(12, 10);
+  }
+}

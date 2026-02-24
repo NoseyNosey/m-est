@@ -13,3 +13,33 @@
 .u-bg-gray {
   background-color: $color-gray;
 }
+
+.u-red-bg-deco {
+  position: relative;
+  background-color: $color-red;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(../../assets/images/common/bg-red-corner.svg) no-repeat center / 100%;
+    @include width-vw(156,60);
+    @include height-vw(156,60);
+  }
+}
+
+.u-gray-bg-deco {
+  position: relative;
+  background-color: $color-gray;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../../assets/images/common/bg-gray-corner.svg) no-repeat center / 100%;
+    @include width-vw(156,60);
+    @include height-vw(156,60);
+  }
+}

@@ -55,22 +55,21 @@
 
 /* ---------------------------------------------------------------------
    汎用レスポンシブ宣言（プロパティ1本を PC/SP 同時出力）
-   修正版：null が渡された場合は出力しない
+   修正版：null が渡された場合は出力しない + !important対応
    ------------------------------------------------------------------ */
 @mixin vw-resp($prop, $pc-val, $sp-val: null, $imp: false) {
-  $important: if($imp, " !important", "");
+  // $imp が true なら !important を、false なら null をセット
+  $is-important: if($imp, !important, null);
 
   // PC値が null でない場合のみ出力
   @if $pc-val != null {
-    & {
-      #{$prop}: px-to-vw($pc-val) #{$important};
-    }
+    #{$prop}: px-to-vw($pc-val) $is-important;
   }
 
   // SP値が null でない場合のみ出力
   @if $sp-val != null {
     @include sp-only {
-      #{$prop}: sp-px-to-vw($sp-val) #{$important};
+      #{$prop}: sp-px-to-vw($sp-val) $is-important;
     }
   }
 }
@@ -103,22 +102,22 @@
 }
 
 /* =====================================================================
-   マージン・パディング
+   マージン・パディング (!important対応版)
    ===================================================================== */
-@mixin margin-top-vw($pc, $sp: null) {
-  @include vw-resp(margin-top, $pc, $sp);
+@mixin margin-top-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(margin-top, $pc, $sp, $important);
 }
 
-@mixin margin-right-vw($pc, $sp: null) {
-  @include vw-resp(margin-right, $pc, $sp);
+@mixin margin-right-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(margin-right, $pc, $sp, $important);
 }
 
-@mixin margin-bottom-vw($pc, $sp: null) {
-  @include vw-resp(margin-bottom, $pc, $sp);
+@mixin margin-bottom-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(margin-bottom, $pc, $sp, $important);
 }
 
-@mixin margin-left-vw($pc, $sp: null) {
-  @include vw-resp(margin-left, $pc, $sp);
+@mixin margin-left-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(margin-left, $pc, $sp, $important);
 }
 
 @mixin margin-vw(
@@ -129,28 +128,29 @@
   $top-sp: null,
   $right-sp: null,
   $bottom-sp: null,
-  $left-sp: null
+  $left-sp: null,
+  $important: false
 ) {
-  @include margin-top-vw($top-pc, $top-sp);
-  @include margin-right-vw($right-pc, $right-sp);
-  @include margin-bottom-vw($bottom-pc, $bottom-sp);
-  @include margin-left-vw($left-pc, $left-sp);
+  @include margin-top-vw($top-pc, $top-sp, $important);
+  @include margin-right-vw($right-pc, $right-sp, $important);
+  @include margin-bottom-vw($bottom-pc, $bottom-sp, $important);
+  @include margin-left-vw($left-pc, $left-sp, $important);
 }
 
-@mixin padding-top-vw($pc, $sp: null) {
-  @include vw-resp(padding-top, $pc, $sp);
+@mixin padding-top-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(padding-top, $pc, $sp, $important);
 }
 
-@mixin padding-right-vw($pc, $sp: null) {
-  @include vw-resp(padding-right, $pc, $sp);
+@mixin padding-right-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(padding-right, $pc, $sp, $important);
 }
 
-@mixin padding-bottom-vw($pc, $sp: null) {
-  @include vw-resp(padding-bottom, $pc, $sp);
+@mixin padding-bottom-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(padding-bottom, $pc, $sp, $important);
 }
 
-@mixin padding-left-vw($pc, $sp: null) {
-  @include vw-resp(padding-left, $pc, $sp);
+@mixin padding-left-vw($pc, $sp: null, $important: false) {
+  @include vw-resp(padding-left, $pc, $sp, $important);
 }
 
 @mixin padding-vw(
@@ -161,12 +161,13 @@
   $top-sp: null,
   $right-sp: null,
   $bottom-sp: null,
-  $left-sp: null
+  $left-sp: null,
+  $important: false
 ) {
-  @include padding-top-vw($top-pc, $top-sp);
-  @include padding-right-vw($right-pc, $right-sp);
-  @include padding-bottom-vw($bottom-pc, $bottom-sp);
-  @include padding-left-vw($left-pc, $left-sp);
+  @include padding-top-vw($top-pc, $top-sp, $important);
+  @include padding-right-vw($right-pc, $right-sp, $important);
+  @include padding-bottom-vw($bottom-pc, $bottom-sp, $important);
+  @include padding-left-vw($left-pc, $left-sp, $important);
 }
 
 /* =====================================================================

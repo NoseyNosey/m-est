@@ -61,6 +61,7 @@
       bottom: 0;
       height: 100vh;
       background-color: $color-red;
+      pointer-events: none;
       @include padding-left-vw(null, 20);
       @include padding-right-vw(null, 20);
       @include padding-top-vw(null, 50);

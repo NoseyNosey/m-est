@@ -4,3 +4,140 @@
 // ==========================================================================
 // Footer
 // ==========================================================================
+
+
+.l-footer {
+  &__catch {
+    display: flex;
+    background-color: $color-red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    @include padding-top-vw(50, 30);
+    @include padding-bottom-vw(50, 30);
+  }
+  &__catch-text {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    text-align: center;
+    @include padding-left-vw(15, 15);
+    @include border-bottom-vw(1, 1, solid, $color-white);
+    @include font-vw(22, 14);
+    @include margin-top-vw(10, 10);
+  }
+  &__catch-logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0.1;
+    @include margin-top-vw(20, 20);
+    @include width-vw(350, 200);
+  }
+
+  &__nav {
+    position: relative;
+    @include padding-top-vw(120, 60);
+    @include padding-bottom-vw(40, 30);
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: url(../../assets/images/common/footer-triangle.svg) no-repeat
+        center center/ 100%;
+      @include width-vw(815, 300);
+      @include height-vw(226, 90);
+    }
+
+    .l-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 1;
+      @include sp-only {
+        display: block;
+      }
+    }
+  }
+
+  &__nav-logo {
+    @include sp-only {
+    }
+    a {
+      display: block;
+      @include margin-bottom-vw(20, 40);
+      @include sp-only {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    img {
+      @include width-vw(296, 200);
+      @include sp-only {
+      }
+    }
+  }
+
+  &__nav-copy {
+    @include font-vw(12, 11);
+    @include sp-only {
+      text-align: center;
+      @include margin-top-vw(null,30);
+    }
+  }
+
+  &__nav-list {
+  }
+
+  &__nav-text-list {
+    display: flex;
+    @include margin-bottom-vw(35, 25);
+    @include sp-only {
+      flex-wrap: wrap;
+    }
+    li {
+      @include sp-only {
+        width: 50%;
+        }
+      + li {
+        @include pc-only {
+          @include margin-left-vw(50, null);
+        }
+        @include sp-only {
+        }
+      }
+      &:nth-child(n + 3) {
+        @include sp-only {
+          @include margin-top-vw(null,15);
+        }
+      }
+      a {
+        font-weight: $font-weight-medium;
+        @include font-vw(16,15);
+      }
+    }
+  }
+
+  &__nav-button-list {
+    display: flex;
+    justify-content: flex-end;
+    @include sp-only {
+      justify-content: space-between;
+    }
+    li {
+      + li {
+        @include pc-only {
+          @include margin-left-vw(30, null);
+        }
+        @include sp-only {
+        }
+      }
+    }
+  }
+}

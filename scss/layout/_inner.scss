@@ -1,5 +1,5 @@
-@use '../foundations/variables' as *;
-@use '../foundations/mixins' as *;
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
 
 /* ==========================================================================
    Layout - Inner
@@ -11,25 +11,19 @@
 
   /* small */
   &.--sm {
-    @include pc-only {
-      @include padding-left-vw(240, 20);
-      @include padding-right-vw(240, 20);
-    }
+    @include padding-left-vw(240, 20);
+    @include padding-right-vw(240, 20);
   }
 
   /* medium */
   &.--md {
-    @include pc-only {
-      @include padding-left-vw(156, 20);
-      @include padding-right-vw(156, 20);
-    }
+    @include padding-left-vw(156, 20);
+    @include padding-right-vw(156, 20);
   }
 
   /* large */
   &.--lg {
-    @include pc-only {
-      @include padding-left-vw(80, 20);
-      @include padding-right-vw(80, 20);
-    }
+    @include padding-left-vw(80, 20);
+    @include padding-right-vw(80, 20);
   }
 }

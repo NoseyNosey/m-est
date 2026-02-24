@@ -17,3 +17,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const swiper = new Swiper('.l-slider-container', {
+    // スライドの幅をCSS（@include width-vw）に依存させる
+    slidesPerView: 'auto',
+    
+    // ページネーションの設定
+    pagination: {
+      el: '.l-slider__pagenation',
+      clickable: true, // クリックでスライド移動可能にする
+    },
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  // 複数の行があるため、すべて取得してループで初期化します
+  const partnerSliders = document.querySelectorAll('.l-partners-slider__row');
+
+  partnerSliders.forEach((slider) => {
+    new Swiper(slider, {
+      slidesPerView: 'auto', // CSSで指定した幅（width-vw）を維持する
+      loop: true,            // 無限ループさせる
+      allowTouchMove: false, // タッチによるスワイプ操作を無効化する
+      
+      // 流れるスピード（ミリ秒）。
+      // 1枚のスライドが流れる速度です。数値が大きいほど「ゆっくり」になります。
+      speed: 6000,           
+      
+      autoplay: {
+        delay: 0, // 0にすることで、停止することなく流れ続けます
+        disableOnInteraction: false,
+      },
+    });
+  });
+});

@@ -4,3 +4,54 @@
 // ==========================================================================
 // Common Title
 // ==========================================================================
+.c-title-two-row {
+  display: flex;
+  align-items: flex-end;
+  &.--mb01 {
+    @include margin-bottom-vw(80, 40);
+  }
+  @include sp-only {
+    display: block;
+  }
+
+  .c-title01 {
+    @include sp-only {
+      @include margin-bottom-vw(null, 25);
+    }
+  }
+}
+
+.c-title01 {
+  font-weight: $font-weight-bold;
+  @include margin-right-vw(80, null);
+  @include sp-only {
+  }
+  .en {
+    display: block;
+    @include font-vw(46, 34);
+    @include sp-only {
+      line-height: 1.2;
+       @include margin-bottom-vw(null, 10);
+    }
+  }
+  .jp {
+    display: block;
+    @include font-vw(14, 14);
+    @include sp-only {
+    }
+  }
+
+  &.--white {
+    color: $color-white;
+  }
+}
+
+.c-description01 {
+  &.--white {
+    color: $color-white;
+    line-height: 2.2;
+    @include font-vw(15, 14);
+    @include sp-only {
+    }
+  }
+}
