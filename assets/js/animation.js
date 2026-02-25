@@ -1,33 +1,22 @@
-// fadeIn アニメーション
-document.addEventListener('DOMContentLoaded', () => {
-    const fadeInTargets = document.querySelectorAll('.u-fadeIn');
+// DOMの読み込みが完了してから実行
+document.addEventListener("DOMContentLoaded", () => {
+  const targets = document.querySelectorAll(".fade");
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-show');
-            }
-        });
-    }, {
-        threshold: 0.1 // 10%見えたら
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      // 画面内に入っていないときは何もしない
+      if (!entry.isIntersecting) return;
+
+      // 画面に入ったらクラスを付与
+      entry.target.classList.add("is-show");
+
+      // 一度表示したら監視を解除（1回きりのアニメーションの場合）
+      obs.unobserve(entry.target);
     });
+  }, {
+    threshold: 0.2 // 20%見えたら発火
+  });
 
-    fadeInTargets.forEach(target => observer.observe(target));
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const fadeInTargets = document.querySelectorAll('.u-fadeOut');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-hide');
-            }
-        });
-    }, {
-        threshold: 0.1 // 10%見えたら
-    });
-
-    fadeInTargets.forEach(target => observer.observe(target));
+  // 各要素を監視対象に登録
+  targets.forEach((el) => observer.observe(el));
 });

@@ -3610,6 +3610,7 @@ button.swiper-pagination-bullet {
 .fade {
   opacity: 0;
   transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 1;
 }
 
 /* 各方向の初期位置（表示前） */
