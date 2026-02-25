@@ -249,3 +249,26 @@
   background-color: $color-white;
   @include border-vw(1, 1, solid, $color-red);
 }
+
+.js-success-message {
+  display: none;
+  h3 {
+    font-weight: $font-weight-bold;
+    text-align: center;
+    @include margin-bottom-vw(30, 20);
+    @include font-vw(32, 24);
+  }
+  p {
+    line-height: 2.2;
+    text-align: center;
+    @include font-vw(15, 14);
+    @include sp-only {
+      text-align: left;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    @include margin-top-vw(40, 20);
+  }
+}

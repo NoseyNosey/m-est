@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
   // ▼▼ ここから前回の「同意チェックボックス」のコード ▼▼
   const agreementCheckbox = document.getElementById("js-agreement");
@@ -67,8 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // ▲▲ ここまで ▲▲
 
-  // ▼▼ ここから今回の「未入力エラー表示」のコード ▼▼
+  // ▼▼ ここから「未入力エラー表示」と「非同期の送信処理」のコード ▼▼
   const form = document.getElementById("js-form");
+  const successMessage = document.getElementById("js-success-message"); // 追加：完了メッセージの枠を取得
 
   if (form) {
     // 必須属性(required)がついている入力欄をすべて取得
@@ -103,18 +105,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // 3. 1つでも未入力があれば送信をキャンセルし、最初のエラー箇所へスクロール
+      // 3. エラー判定と送信処理
       if (!isValid) {
-        e.preventDefault(); // 送信をストップ
+        // 【エラーがある場合】送信をキャンセルし、最初のエラー箇所へスクロール
+        e.preventDefault();
 
         const firstErrorInput = document.querySelector(".is-error");
         if (firstErrorInput) {
-          // エラーがある場所までスムーズにスクロールして戻る（親切機能）
           firstErrorInput.scrollIntoView({
             behavior: "smooth",
             block: "center",
           });
         }
+      } else {
+        // ▼▼▼ 追加：【エラーがない場合】裏側で送信して完了画面を出す処理 ▼▼▼
+        e.preventDefault(); // 通常の画面遷移（画面のチラつき）をストップ
+
+        // ボタンを「送信中...」に変更し、連打（二重送信）を防ぐ
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = "送信中...";
+        submitButton.disabled = true;
+
+        // フォームの入力データを取得
+        const formData = new FormData(form);
+
+        // confirm.php へデータを非同期で送る
+        fetch(form.action, { // form.action は "confirm.php" を指します
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              // 送信成功：フォームを隠して、完了メッセージを表示する
+              form.style.display = "none";
+              if (successMessage) {
+                successMessage.style.display = "block";
+                // 完了メッセージの位置へスクロールさせる
+                successMessage.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              }
+            } else {
+              throw new Error("Network response was not ok.");
+            }
+          })
+          .catch((error) => {
+            // 送信失敗（ネットワークエラー等）時の処理
+            alert("通信エラーが発生しました。時間をおいて再度お試しください。");
+            // ボタンを元の状態に戻す
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+          });
+        // ▲▲▲ 追加処理 ここまで ▲▲▲
       }
     });
 

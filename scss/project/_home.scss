@@ -831,6 +831,10 @@
   .c-title01 {
     margin-right: 0;
     @include margin-bottom-vw(50, 30);
+    @include sp-only {
+      @include padding-left-vw(null, 20);
+      @include padding-right-vw(null, 20);
+    }
   }
 
   .c-description01 {
@@ -838,6 +842,11 @@
     margin-left: 0;
     line-height: 2.4;
     @include margin-bottom-vw(50, 30);
+    @include sp-only {
+      text-align: left;
+      @include padding-left-vw(null, 20);
+      @include padding-right-vw(null, 20);
+    }
   }
 
   .l-partners-slider {
@@ -1034,6 +1043,11 @@
     &.--center {
       margin-right: 0;
       @include margin-bottom-vw(50, 30);
+      @include sp-only {
+        text-align: left;
+        @include padding-left-vw(null, 20);
+        @include padding-right-vw(null, 20);
+      }
     }
   }
 
@@ -1043,6 +1057,11 @@
       margin-left: 0;
       line-height: 2.4;
       @include margin-bottom-vw(60, 40);
+      @include sp-only {
+        text-align: left;
+        @include padding-left-vw(null, 20);
+        @include padding-right-vw(null, 20);
+      }
     }
   }
 
@@ -1136,7 +1155,7 @@
 
   .c-description01 {
     line-height: 3;
-    @include margin-bottom-vw(80,30);
+    @include margin-bottom-vw(80, 30);
   }
 }
 
@@ -1144,7 +1163,7 @@
   background-color: $color-white;
   @include padding-top-vw(80, 200);
   @include padding-bottom-vw(140, 60);
-  
+
   &__catch {
     position: absolute;
     top: 0;
@@ -1161,7 +1180,6 @@
     @include margin-top-vw(40, 20);
   }
 }
-
 
 // ==========================================================================
 // Privacy
