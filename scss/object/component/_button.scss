@@ -52,7 +52,7 @@
   font-weight: $font-weight-medium;
   background-color: $color-red;
   position: relative;
-  @include border-vw(1, 1,solid, $color-red);
+  @include border-vw(1, 1, solid, $color-red);
   @include padding-top-vw(4, 4);
   @include padding-right-vw(15, 15);
   @include font-vw(16, 16);
@@ -80,16 +80,16 @@
       background-image: url(../../assets/images/common/arrow-button-red.svg);
     }
     &:hover {
-        @include pc-only {
-      background-color: $color-red;
-      color: $color-white;
-    }
-    &::after {
       @include pc-only {
-        background-image: url(../../assets/images/common/arrow-button-white.svg);
+        background-color: $color-red;
+        color: $color-white;
+      }
+      &::after {
+        @include pc-only {
+          background-image: url(../../assets/images/common/arrow-button-white.svg);
+        }
       }
     }
-    } 
   }
   &:hover {
     @include pc-only {
@@ -102,5 +102,11 @@
         background-image: url(../../assets/images/common/arrow-button-red.svg);
       }
     }
+  }
+
+  &:disabled {
+    opacity: 0.5; /* 半透明にする */
+    cursor: not-allowed; /* マウスカーソルを禁止マークにする */
+    pointer-events: none; /* ホバーアクションなどを無効化する */
   }
 }

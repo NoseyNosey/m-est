@@ -1,57 +1,143 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.l-header');
-  const menuButton = document.querySelector('.l-header__menu-button');
-  const navLinks = document.querySelectorAll('.l-header__nav-list-text a');
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".l-header");
+  const menuButton = document.querySelector(".l-header__menu-button");
+  const navLinks = document.querySelectorAll(".l-header__nav-list-text a");
 
   if (!header || !menuButton) return;
 
   // メニューボタン押下：is-active をトグル
-  menuButton.addEventListener('click', () => {
-    header.classList.toggle('is-active');
+  menuButton.addEventListener("click", () => {
+    header.classList.toggle("is-active");
   });
 
   // ナビリンク押下：is-active を削除
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      header.classList.remove('is-active');
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      header.classList.remove("is-active");
     });
   });
 });
 
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const swiper = new Swiper('.l-slider-container', {
+document.addEventListener("DOMContentLoaded", function () {
+  const swiper = new Swiper(".l-slider-container", {
     // スライドの幅をCSS（@include width-vw）に依存させる
-    slidesPerView: 'auto',
-    
+    slidesPerView: "auto",
+
     // ページネーションの設定
     pagination: {
-      el: '.l-slider__pagenation',
+      el: ".l-slider__pagenation",
       clickable: true, // クリックでスライド移動可能にする
     },
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   // 複数の行があるため、すべて取得してループで初期化します
-  const partnerSliders = document.querySelectorAll('.l-partners-slider__row');
+  const partnerSliders = document.querySelectorAll(".l-partners-slider__row");
 
   partnerSliders.forEach((slider) => {
     new Swiper(slider, {
-      slidesPerView: 'auto', // CSSで指定した幅（width-vw）を維持する
-      loop: true,            // 無限ループさせる
+      slidesPerView: "auto", // CSSで指定した幅（width-vw）を維持する
+      loop: true, // 無限ループさせる
       allowTouchMove: false, // タッチによるスワイプ操作を無効化する
-      
+
       // 流れるスピード（ミリ秒）。
       // 1枚のスライドが流れる速度です。数値が大きいほど「ゆっくり」になります。
-      speed: 6000,           
-      
+      speed: 6000,
+
       autoplay: {
         delay: 0, // 0にすることで、停止することなく流れ続けます
         disableOnInteraction: false,
       },
     });
   });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // ▼▼ ここから前回の「同意チェックボックス」のコード ▼▼
+  const agreementCheckbox = document.getElementById("js-agreement");
+  const submitButton = document.getElementById("js-submit");
+
+  if (agreementCheckbox && submitButton) {
+    submitButton.disabled = !agreementCheckbox.checked;
+    agreementCheckbox.addEventListener("change", function () {
+      submitButton.disabled = !this.checked;
+    });
+  }
+  // ▲▲ ここまで ▲▲
+
+  // ▼▼ ここから今回の「未入力エラー表示」のコード ▼▼
+  const form = document.getElementById("js-form");
+
+  if (form) {
+    // 必須属性(required)がついている入力欄をすべて取得
+    const requiredInputs = form.querySelectorAll("[required]");
+
+    form.addEventListener("submit", function (e) {
+      let isValid = true;
+
+      // 1. まず過去のエラー表示をすべてリセットする
+      const existingErrors = form.querySelectorAll(".c-error-msg");
+      existingErrors.forEach((error) => error.remove());
+      requiredInputs.forEach((input) => input.classList.remove("is-error"));
+
+      // 2. 各必須項目をチェックする
+      requiredInputs.forEach((input) => {
+        // 空欄の場合（空白スペースのみも空欄とみなす）
+        if (!input.value.trim()) {
+          isValid = false;
+          input.classList.add("is-error"); // 枠線を赤くするクラスを追加
+
+          // エラーメッセージ（赤文字）を作成
+          const errorMsg = document.createElement("span");
+          errorMsg.classList.add("c-error-msg");
+          errorMsg.textContent = "必須項目です。入力をお願いします。";
+
+          // 入力欄の親要素（.td）の最後にエラーメッセージを追加
+          const parentTd = input.closest(".td");
+          // 姓・名など横並びの要素でエラー文が2つ重ならないようにする制御
+          if (!parentTd.querySelector(".c-error-msg")) {
+            parentTd.appendChild(errorMsg);
+          }
+        }
+      });
+
+      // 3. 1つでも未入力があれば送信をキャンセルし、最初のエラー箇所へスクロール
+      if (!isValid) {
+        e.preventDefault(); // 送信をストップ
+
+        const firstErrorInput = document.querySelector(".is-error");
+        if (firstErrorInput) {
+          // エラーがある場所までスムーズにスクロールして戻る（親切機能）
+          firstErrorInput.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }
+    });
+
+    // 4. （おまけ）ユーザーが入力し直したら、その場でエラー表示を消す
+    requiredInputs.forEach((input) => {
+      input.addEventListener("input", function () {
+        if (this.value.trim()) {
+          this.classList.remove("is-error");
+
+          const parentTd = this.closest(".td");
+          // 同じ親要素内の必須項目がすべて入力されたかチェック（姓・名の対策）
+          const siblingInputs = parentTd.querySelectorAll("[required]");
+          let allFilled = true;
+          siblingInputs.forEach((sib) => {
+            if (!sib.value.trim()) allFilled = false;
+          });
+
+          if (allFilled) {
+            const errorMsg = parentTd.querySelector(".c-error-msg");
+            if (errorMsg) errorMsg.remove();
+          }
+        }
+      });
+    });
+  }
 });

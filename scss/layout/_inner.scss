@@ -26,4 +26,10 @@
     @include padding-left-vw(80, 20);
     @include padding-right-vw(80, 20);
   }
+
+  &.--sp-p0 {
+    @include sp-only {
+      padding: 0;
+    }
+  }
 }

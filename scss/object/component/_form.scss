@@ -1,0 +1,251 @@
+@use "../../foundations/variables" as *;
+@use "../../foundations/mixins" as *;
+
+// ==========================================================================
+// Button (Component)
+// ==========================================================================
+
+.c-radio-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.c-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  // gapの代わりに、折り返し（flex-wrap）を考慮して右と下に余白を持たせます
+  @include margin-right-vw(40, 20);
+
+  // 最後の項目は右側の余白を消す
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  // デフォルトのラジオボタンを非表示にする
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    // チェックされた時のスタイル変更（隣接する__markの枠線をプロジェクトの赤色にする）
+    &:checked + .c-radio__mark {
+      border-color: $color-red;
+    }
+  }
+
+  // カスタムラジオボタンの見た目
+  &__mark {
+    display: inline-block;
+    flex-shrink: 0;
+    @include width-vw(24, 20); // 丸の全体の幅
+    @include height-vw(24, 20); // 丸の全体の高さ
+    // 既存のborderミックスインを使用（太さPC, 太さSP, 種類, 色）
+    @include border-vw(6, 5, solid, $color-gray);
+    border-radius: 50%; // きれいな丸にする（ここはvwではなく%が適当です）
+    background-color: $color-white;
+    box-sizing: border-box;
+    @include margin-right-vw(12, 8); // テキストとの余白
+    transition: border-color $transition;
+  }
+
+  // テキストのスタイル
+  &__text {
+    @include padding-top-vw(3, 3);
+    @include font-vw(15, 14);
+  }
+}
+
+.c-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  // gapの代わりに、折り返し（flex-wrap）を考慮して右と下に余白を持たせます
+  @include margin-right-vw(40, 20);
+
+  // 最後の項目は右側の余白を消す
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  // デフォルトのチェックボックスを非表示にする
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    // チェックされた時のスタイル変更（隣接する__markの枠線をプロジェクトの赤色にする）
+    &:checked + .c-checkbox__mark {
+      border-color: $color-red;
+    }
+  }
+
+  // カスタムチェックボックスの見た目（ラジオボタンと同じ丸型スタイルを継承）
+  &__mark {
+    display: inline-block;
+    flex-shrink: 0;
+    @include width-vw(24, 20); // 丸の全体の幅
+    @include height-vw(24, 20); // 丸の全体の高さ
+    // 既存のborderミックスインを使用（太さPC, 太さSP, 種類, 色）
+    @include border-vw(6, 5, solid, $color-gray);
+    border-radius: 50%; // きれいな丸にする
+    background-color: $color-white;
+    box-sizing: border-box;
+    @include margin-right-vw(12, 8); // テキストとの余白
+    transition: border-color $transition;
+
+    @include sp-only {
+      @include margin-bottom-vw(null, 27);
+    }
+  }
+
+  // テキストのスタイル
+  &__text {
+    @include padding-top-vw(3, 3);
+    @include font-vw(15, 14);
+
+    // リンク部分（「個人情報保護方針」など）のスタイル
+    a {
+      color: inherit; // 親の文字色を引き継ぐ
+      text-decoration: underline; // 下線を引く
+      text-decoration-thickness: 1px; // 下線の太さ
+      text-underline-offset: 4px; // 下線と文字の距離
+      transition: opacity $transition; // ホバー時のふわっとした変化
+
+      &:hover {
+        opacity: 0.7; // ホバー時に少し薄くする
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Input (Component)
+// ==========================================================================
+
+.c-input {
+  display: block;
+  width: 100%; // 親要素に合わせて横幅いっぱいにするのが一般的です
+  background-color: $color-gray; // 画像に近い薄いグレー（既存の変数があれば変更してください）
+  border: none; // 枠線なし
+  border-radius: 0; // 角丸なし
+  appearance: none; // ブラウザデフォルトのスタイルをリセット
+
+  // 余白の調整（上下、左右）
+  @include padding-vw(20, 15, 20, 15, 20, 15, 20, 15);
+  @include padding-left-vw(
+    30,
+    15
+  ); // 画像を見ると左の余白が少し広めなので上書き調整
+
+  @include font-vw(16, 14);
+  color: $color-black; // 入力されたテキストの色
+
+  // プレースホルダー（入力前の薄い文字）のスタイル
+  &::placeholder {
+    color: $color-black-alpha-25; // 画像に近いプレースホルダーの文字色
+  }
+
+  // フォーカス（入力中）時のスタイル
+  &:focus {
+    outline: none; // デフォルトのアウトラインを消す
+    background-color: $color-white; // 入力中は背景を白にする（任意）
+    // 枠線をつける場合はbox-shadowを使うとレイアウトがズレません
+    @include box-shadow-vw(0, 0, 0, 1, $color-gray, 0, 0, 0, 1);
+  }
+}
+
+// ==========================================================================
+// Input Row (横並びレイアウト用ラッパー)
+// ==========================================================================
+
+.c-input-row {
+  display: flex;
+
+  .c-input {
+    flex: 1; // 兄弟要素と均等な幅になるよう自動調整させます
+    width: auto; // c-inputに設定されている width: 100%; を上書き
+
+    // gapの代わりに margin を使用して余白を設ける
+    // 2つ目以降の要素の左側にだけ余白をつけます
+    + .c-input {
+      @include margin-left-vw(
+        20,
+        20
+      ); // 横並び時の余白（数値を調整してください）
+    }
+  }
+
+  // スマホ表示（SP）で縦並びに落とす場合
+  @include sp-only {
+    flex-direction: column;
+
+    .c-input {
+      width: 100%; // 縦並びの時は幅100%に戻す
+
+      + .c-input {
+        margin-left: 0; // 横並び用の左マージンをリセット
+        @include margin-top-vw(null, 15); // 縦に並んだ時の上マージンをつける
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Textarea (Component)
+// ==========================================================================
+
+.c-textarea {
+  display: block;
+  width: 100%;
+  background-color: $color-gray;
+  border: none;
+  border-radius: 0;
+  appearance: none;
+  font-family: inherit; // デフォルトのフォントズレを防ぐ
+
+  // 余白の調整
+  @include padding-vw(20, 15, 20, 15, 20, 15, 20, 15);
+  @include padding-left-vw(30, 15);
+
+  @include font-vw(16, 14);
+  color: $color-black;
+
+  // --- テキストエリア特有のスタイル ---
+  @include height-vw(
+    300,
+    200
+  ); // 画像の比率に合わせた初期の高さ（調整してください）
+  resize: vertical; // ユーザーが縦方向にのみ枠を広げられるようにする（不要なら none に）
+  // ------------------------------------
+
+  &::placeholder {
+    color: $color-black-alpha-25; // 画像に近いプレースホルダーの文字色
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $color-white;
+    @include box-shadow-vw(0, 0, 0, 1, $color-gray, 0, 0, 0, 1);
+  }
+}
+
+/* エラーメッセージのテキスト */
+.c-error-msg {
+  color: $color-red; /* 赤色 */
+  font-size: 0.875rem;
+  @include margin-top-vw(8, 8);
+  display: block;
+}
+
+/* エラー時の入力フォームの枠線と背景色 */
+.c-input.is-error,
+.c-textarea.is-error {
+  background-color: $color-white;
+  @include border-vw(1, 1, solid, $color-red);
+}

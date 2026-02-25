@@ -1,0 +1,152 @@
+@use "../foundations/variables" as *;
+@use "../foundations/mixins" as *;
+
+/* ==========================================================================
+   Layout - Table
+   ========================================================================== */
+
+.c-table01 {
+  .tr {
+    display: flex;
+    position: relative;
+    line-height: 2.4;
+    &::before {
+      content: "";
+      display: block;
+      background-color: $color-red;
+      z-index: 1;
+      width: 30%;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      @include height-vw(1, 1);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      background-color: $color-black;
+      z-index: 1;
+      width: 70%;
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      @include height-vw(1, 1);
+    }
+
+    &:last-of-type {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &.--no-border {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .th {
+    width: 30%;
+    position: relative;
+    font-weight: $font-weight-bold;
+    @include padding-bottom-vw(40, 30);
+    @include padding-top-vw(40, 30);
+    @include padding-left-vw(20, 10);
+    @include padding-right-vw(20, 10);
+    @include font-vw(15, 14);
+    @include sp-only {
+    }
+
+    &.--ver-top {
+      align-items: flex-start !important;
+      @include margin-top-vw(13, 13);
+    }
+  }
+  .td {
+    width: 70%;
+    position: relative;
+    @include padding-bottom-vw(40, 30);
+    @include padding-top-vw(40, 30);
+    @include padding-left-vw(20, 10);
+    @include padding-right-vw(20, 10);
+    @include font-vw(15, 14);
+  }
+
+  .bold {
+    font-weight: $font-weight-bold;
+  }
+
+  .require {
+    color: $color-white;
+    background-color: $color-red;
+    font-weight: $font-weight-regular;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font-vw(12, 12);
+    @include width-vw(40, 40);
+    @include height-vw(23, 23);
+  }
+
+  .option {
+    color: $color-white;
+    background-color: $color-black-alpha-50;
+    font-weight: $font-weight-regular;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font-vw(12, 12);
+    @include width-vw(40, 40);
+    @include height-vw(23, 23);
+  }
+
+  &.--form {
+    .tr {
+      @include sp-only {
+        display: block;
+      }
+    }
+    .th {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include sp-only {
+        width: 100%;
+        padding-bottom: 0;
+      }
+    }
+
+    .td {
+      @include sp-only {
+        width: 100%;
+        @include padding-top-vw(null, 18);
+      }
+    }
+  }
+}
+
+.c-table02 {
+  .tr {
+    line-height: 3;
+    @include padding-top-vw(40, 30);
+    @include padding-bottom-vw(40, 30);
+    @include padding-left-vw(20, 10);
+    @include padding-right-vw(20, 10);
+    @include border-bottom-vw(1, 1, solid, $color-black-alpha-25);
+    &:last-of-type {
+      border: 0;
+    }
+  }
+
+  .th {
+    font-weight: $font-weight-bold;
+    @include font-vw(24, 20);
+  }
+
+  .td {
+    @include font-vw(15, 14);
+  }
+}

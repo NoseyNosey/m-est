@@ -44,13 +44,20 @@
   &.--white {
     color: $color-white;
   }
+
+  &.--center {
+    text-align: center;
+    @include sp-only {
+      text-align: left;
+    }
+  }
 }
 
 .c-description01 {
+      line-height: 2.2;
+    @include font-vw(15, 14);
   &.--white {
     color: $color-white;
-    line-height: 2.2;
-    @include font-vw(15, 14);
     @include sp-only {
     }
   }

@@ -40,7 +40,7 @@
 
   &__nav {
     position: relative;
-    @include padding-top-vw(120, 60);
+    @include padding-top-vw(140, 60);
     @include padding-bottom-vw(40, 30);
     &::after {
       content: "";

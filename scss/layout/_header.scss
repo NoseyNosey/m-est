@@ -24,7 +24,7 @@
     position: relative;
     @include padding-top-vw(10, 10);
     @include sp-only {
-      @include padding-left-vw(null, 15);
+      // @include padding-left-vw(0);
     }
     a {
       display: block;
@@ -38,7 +38,7 @@
       z-index: 1;
       @include border-radius-vw(36, 36, "bottom-right");
       @include left-vw(-80, -20);
-      @include width-vw(280, 180);
+      @include width-vw(280, 170);
       @include height-vw(90, 70);
     }
     img {

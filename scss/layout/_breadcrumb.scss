@@ -4,3 +4,26 @@
 // ==========================================================================
 // Breadcrumb
 // ==========================================================================
+
+.l-bread {
+  display: flex;
+      @include padding-left-vw(80, 20);
+    @include padding-right-vw(40, 20);
+    @include font-vw(12,12);
+  li {
+    + li {
+    }
+    a {
+      color: $color-red;
+      text-decoration: underline;
+    }
+  }
+  .dot {
+      @include padding-left-vw(10, 5);
+    @include padding-right-vw(10, 5);
+  }
+
+  .c-title-two-row {
+
+  }
+}

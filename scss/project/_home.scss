@@ -88,10 +88,8 @@
 
 .p-home-intro {
   position: relative;
-  .l-inner {
-    @include padding-top-vw(130, 80);
-    @include padding-bottom-vw(120, 80);
-  }
+  @include padding-top-vw(140, 80);
+  @include padding-bottom-vw(140, 80);
   &__description {
     line-height: 3;
     font-weight: $font-weight-medium;
@@ -146,10 +144,8 @@
 }
 
 .p-home-business {
-  .l-inner {
-    @include padding-top-vw(120, 60);
-    @include padding-bottom-vw(120, 60);
-  }
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(160, 60);
 
   &__list {
     display: flex;
@@ -232,10 +228,8 @@
 }
 
 .p-home-scale {
-  .l-inner {
-    @include padding-top-vw(120, 60);
-    @include padding-bottom-vw(120, 60);
-  }
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(140, 60);
   &__list {
     display: flex;
     justify-content: space-between;
@@ -325,7 +319,7 @@
 
 .p-home-project {
   @include margin-top-vw(100, 60);
-  @include padding-bottom-vw(120, 60);
+  @include padding-bottom-vw(140, 60);
 
   &__title {
     position: relative;
@@ -349,8 +343,8 @@
 
 .p-home-partners {
   background-color: $color-black;
-  @include padding-top-vw(120, 60);
-  @include padding-bottom-vw(120, 60);
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(140, 60);
   .l-inner {
   }
 }
@@ -506,9 +500,684 @@
   }
 }
 
+// ==========================================================================
+// Subpage
+// ==========================================================================
+.subpage {
+}
 
+.subpage-mv {
+  background-color: $color-white;
+  &__key {
+    background-position: center center;
+    background-size: cover;
+    @include height-vw(590, 400);
+  }
 
+  &__title {
+    position: relative;
+    display: inline-block;
+    background-color: $color-white;
+    @include margin-top-vw(-129, -79);
+    @include padding-left-vw(80, 20);
+    @include padding-right-vw(40, 20);
+    @include padding-top-vw(40, 30);
+    @include height-vw(130, 80);
+    @include margin-bottom-vw(40, 40);
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: url(../../assets/images/common/title-bg.svg) no-repeat center
+        center/ 100% 100%;
+      @include right-vw(-120, -70);
+      @include bottom-vw(-40, -20);
+      @include width-vw(170, 100);
+      @include height-vw(170, 100);
+    }
+
+    .en {
+      display: block;
+      position: relative;
+      z-index: 1;
+      color: $color-red;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      @include margin-bottom-vw(15, 10);
+      @include font-vw(64, 42);
+    }
+    .jp {
+      display: block;
+      position: relative;
+      z-index: 1;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      @include font-vw(16, 14);
+    }
+  }
+}
 
 // ==========================================================================
 // Company
 // ==========================================================================
+.p-sub-company {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/company/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/company/mv-image-sp.png);
+    }
+  }
+}
+
+.p-sub-company-intro {
+  background-color: $color-white;
+  @include padding-top-vw(80, 60);
+  @include padding-bottom-vw(140, 160);
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    background: url(../../assets/images/common/deco-colorful-right.svg)
+      no-repeat center / 100% 100%;
+    @include top-vw(-78, -66.5);
+    @include width-vw(330, 220);
+    @include height-vw(330, 220);
+    @include sp-only {
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../../assets/images/common/deco-colorful-left.svg) no-repeat
+      center / 100%;
+    @include width-vw(330, 200);
+    @include height-vw(330, 200);
+    @include sp-only {
+    }
+  }
+
+  .c-title-two-row {
+    align-items: flex-start;
+  }
+
+  .c-description01 {
+    line-height: 3;
+    @include sp-only {
+      @include font-vw(null, 14);
+    }
+    .logo {
+      display: block;
+      @include margin-top-vw(20, 10);
+      @include width-vw(195, 160);
+      @include margin-bottom-vw(30, 30);
+    }
+  }
+}
+
+.p-sub-company-philosophy {
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(160, 60);
+  .c-title-two-row {
+    align-items: flex-start;
+  }
+  .c-description01 {
+    line-height: 3;
+    @include margin-top-vw(80, 50);
+
+    .big {
+      font-weight: $font-weight-bold;
+      display: block;
+      line-height: 1;
+      @include margin-bottom-vw(40, 20);
+      @include font-vw(60, 38);
+    }
+  }
+
+  .c-title01 {
+    @include margin-bottom-vw(40, 20);
+  }
+}
+
+// ==========================================================================
+// Business
+// ==========================================================================
+
+.p-sub-business {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/business/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/business/mv-image-sp.png);
+    }
+  }
+
+  .subpage-mv__title {
+    @include sp-only {
+      @include margin-top-vw(null, -76);
+    }
+  }
+
+  .subpage-mv__title {
+    @include sp-only {
+      @include height-vw(null, 118);
+      @include width-vw(null, 230);
+    }
+    &::before {
+      @include sp-only {
+        @include bottom-vw(null, 18);
+      }
+    }
+  }
+}
+
+.p-sub-business-intro {
+  background-color: $color-white;
+  @include padding-top-vw(80, 60);
+  @include padding-bottom-vw(140, 160);
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    background: url(../../assets/images/common/deco-colorful-right.svg)
+      no-repeat center / 100% 100%;
+    @include top-vw(-78, -103.5);
+    @include width-vw(330, 220);
+    @include height-vw(330, 220);
+    @include sp-only {
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../../assets/images/common/deco-colorful-left.svg) no-repeat
+      center / 100%;
+    @include width-vw(330, 200);
+    @include height-vw(330, 200);
+    @include sp-only {
+    }
+  }
+
+  .c-title-two-row {
+    align-items: flex-start;
+  }
+
+  .c-description01 {
+    line-height: 3;
+    @include margin-top-vw(30, 30);
+    @include sp-only {
+      @include font-vw(null, 14);
+    }
+    .text01 {
+      font-weight: $font-weight-bold;
+      line-height: 2.2;
+      @include font-vw(20, 18);
+    }
+    .text02 {
+      font-weight: $font-weight-bold;
+      line-height: 2.2;
+      @include font-vw(24, 20);
+    }
+  }
+}
+
+.p-sub-business-structure {
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(160, 60);
+}
+
+.p-sub-business-structure {
+  .c-title-two-row {
+    @include margin-bottom-vw(50, 30);
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    @include sp-only {
+      display: block;
+    }
+    li {
+      position: relative;
+      @include width-vw(283, null);
+      @include sp-only {
+        width: 100%;
+      }
+      + li {
+        &::after {
+          content: "";
+          display: block;
+          background: url(../../assets/images/common/arrow-right-white.svg)
+            no-repeat center / 100%;
+          position: absolute;
+          @include top-vw(120, 10);
+          @include left-vw(-62, -30);
+          @include width-vw(50, 50);
+          @include height-vw(50, 50);
+          @include sp-only {
+            left: 0;
+            right: 0;
+            margin: auto;
+            transform: rotate(90deg);
+          }
+        }
+        @include sp-only {
+          @include padding-top-vw(null, 80);
+        }
+      }
+    }
+  }
+
+  &__circle {
+    background-color: $color-white;
+    @include padding-top-vw(30, 30);
+    @include border-radius-vw(300, 300);
+    @include width-vw(283, 283);
+    @include height-vw(283, 283);
+    @include margin-bottom-vw(20, 20);
+    @include sp-only {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__item-img {
+    text-align: center;
+    @include margin-bottom-vw(10, 10);
+    img {
+      @include width-vw(150, 150);
+    }
+  }
+
+  &__item-title {
+    text-align: center;
+    line-height: 1;
+    .en {
+      color: $color-red;
+      font-weight: $font-weight-bold;
+      display: block;
+      @include margin-bottom-vw(10, 10);
+      @include font-vw(24, 24);
+    }
+    .jp {
+      color: $color-red;
+      font-weight: $font-weight-bold;
+      display: block;
+      @include font-vw(11, 11);
+    }
+  }
+
+  &__description {
+    text-align: center;
+    color: $color-white;
+    line-height: 2.3;
+    white-space: nowrap;
+    @include font-vw(12, 13);
+    @include sp-only {
+      white-space: wrap;
+    }
+  }
+}
+
+.p-sub-business-partners {
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(140, 60);
+  .c-title01 {
+    margin-right: 0;
+    @include margin-bottom-vw(50, 30);
+  }
+
+  .c-description01 {
+    text-align: center;
+    margin-left: 0;
+    line-height: 2.4;
+    @include margin-bottom-vw(50, 30);
+  }
+
+  .l-partners-slider {
+  }
+}
+
+// ==========================================================================
+// Sustainability
+// ==========================================================================
+
+.p-sub-sustainability {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/sustainability/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/sustainability/mv-image-sp.png);
+    }
+  }
+
+  .subpage-mv__title {
+    @include sp-only {
+      @include margin-top-vw(null, -76);
+    }
+  }
+
+  .subpage-mv__title {
+    @include sp-only {
+      @include width-vw(null, 320);
+    }
+    &::before {
+      @include sp-only {
+      }
+    }
+  }
+}
+
+.p-sub-sustainability-intro {
+  background-color: $color-white;
+  @include padding-top-vw(80, 60);
+  @include padding-bottom-vw(140, 160);
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    background: url(../../assets/images/common/deco-colorful-right.svg)
+      no-repeat center / 100% 100%;
+    @include top-vw(-78, -66);
+    @include width-vw(330, 220);
+    @include height-vw(330, 220);
+    @include sp-only {
+      @include right-vw(null, -74);
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../../assets/images/common/deco-colorful-left.svg) no-repeat
+      center / 100%;
+    @include width-vw(330, 200);
+    @include height-vw(330, 200);
+    @include sp-only {
+    }
+  }
+
+  .c-title-two-row {
+    align-items: flex-start;
+  }
+
+  .c-description01 {
+    line-height: 3;
+    @include margin-top-vw(30, 30);
+    @include sp-only {
+      @include font-vw(null, 14);
+    }
+    .text01 {
+      font-weight: $font-weight-bold;
+      line-height: 2.2;
+      @include font-vw(20, 18);
+    }
+    .text02 {
+      font-weight: $font-weight-bold;
+      line-height: 2.2;
+      @include font-vw(24, 20);
+    }
+  }
+}
+
+.p-sub-sustainability-sdgs {
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(160, 10);
+
+  .c-title-two-row {
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    @include padding-right-vw(76, 0);
+    @include padding-left-vw(254, 0);
+  }
+
+  &__item {
+    position: relative;
+    width: 100%;
+    @include padding-left-vw(40, 20);
+    @include padding-top-vw(55, 30);
+    @include padding-bottom-vw(55, 30);
+    @include border-bottom-vw(1, 1, solid, $color-white);
+    &.--tree {
+      @include padding-bottom-vw(null, 70);
+    }
+    &:last-of-type {
+      border: 0;
+    }
+  }
+
+  &__item-title {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    @include font-vw(27, 20);
+    @include margin-bottom-vw(20, 15);
+  }
+
+  &__item-description {
+    color: $color-white;
+    line-height: 3;
+    @include font-vw(15, 14);
+  }
+
+  &__item-img {
+    position: absolute;
+    bottom: 0;
+    @include width-vw(150, 80);
+    @include right-vw(20, -10);
+    img {
+    }
+  }
+
+  &__child-list {
+    color: $color-white;
+    line-height: 3;
+    &.--two-row {
+      display: flex;
+      flex-wrap: wrap;
+      @include sp-only {
+        display: block;
+      }
+      .p-sub-sustainability-sdgs__child-item {
+        width: 50%;
+        @include sp-only {
+          width: 100%;
+        }
+        &:nth-child(n + 3) {
+          @include margin-top-vw(10, 10);
+        }
+      }
+    }
+  }
+
+  &__child-item {
+    &:nth-child(2n) {
+      @include margin-top-vw(10, 10);
+    }
+  }
+
+  &__child-title {
+    font-weight: $font-weight-bold;
+    position: relative;
+    padding-left: 1.7rem;
+    @include font-vw(18, 16);
+    &::before {
+      content: "・";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__child-description {
+    padding-left: 1.7rem;
+    @include font-vw(15, 14);
+  }
+}
+
+.p-sub-sustainability-social {
+  @include padding-top-vw(140, 60);
+  @include padding-bottom-vw(140, 60);
+  .c-title01 {
+    &.--center {
+      margin-right: 0;
+      @include margin-bottom-vw(50, 30);
+    }
+  }
+
+  .c-description01 {
+    &.--center {
+      text-align: center;
+      margin-left: 0;
+      line-height: 2.4;
+      @include margin-bottom-vw(60, 40);
+    }
+  }
+
+  .c-title-two-row {
+    @include margin-bottom-vw(30, 10);
+    .c-title01 {
+      @include margin-bottom-vw(20, 10);
+    }
+    .c-description01 {
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    @include margin-top-vw(30, 20);
+  }
+
+  .l-slider {
+    &__img {
+      img {
+        width: 80%;
+      }
+    }
+
+    .swiper-slide {
+      @include sp-only {
+        height: auto;
+      }
+    }
+  }
+
+  &__list {
+    > li {
+      + li {
+        @include margin-top-vw(95, 50);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Contact
+// ==========================================================================
+
+.p-sub-contact {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/contact/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/contact/mv-image-sp.png);
+    }
+  }
+
+  .c-title01 {
+    margin-right: 0;
+    @include margin-bottom-vw(60, 30);
+  }
+}
+
+.p-sub-contact-form {
+  background-color: $color-white;
+  @include padding-top-vw(80, 60);
+  @include padding-bottom-vw(140, 60);
+
+  .c-table01 {
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    @include margin-top-vw(40, 20);
+  }
+}
+
+// ==========================================================================
+// Recruit
+// ==========================================================================
+
+.p-sub-recruit {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/recruit/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/recruit/mv-image-sp.png);
+    }
+  }
+
+  .c-title01 {
+    margin-right: 0;
+    @include margin-bottom-vw(60, 30);
+  }
+
+  .c-description01 {
+    line-height: 3;
+    @include margin-bottom-vw(80,30);
+  }
+}
+
+.p-sub-recruit-main {
+  background-color: $color-white;
+  @include padding-top-vw(80, 200);
+  @include padding-bottom-vw(140, 60);
+  
+  &__catch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include width-vw(830, 340);
+    @include sp-only {
+      @include top-vw(0, 40);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    @include margin-top-vw(40, 20);
+  }
+}
+
+
+// ==========================================================================
+// Privacy
+// ==========================================================================
+
+.p-sub-privacy {
+  .subpage-mv__key {
+    background-image: url(../../assets/images/privacy/mv-image.png);
+    @include sp-only {
+      background-image: url(../../assets/images/privacy/mv-image-sp.png);
+    }
+  }
+}
+
+.p-sub-privacy-main {
+  background-color: $color-white;
+  @include padding-top-vw(80, 30);
+  @include padding-bottom-vw(140, 60);
+}

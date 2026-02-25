@@ -97,8 +97,6 @@
   }
 }
 
-
-
 .l-partners-slider {
   overflow: hidden; // ずらした分が画面外に出るため、はみ出しを隠す
 
@@ -148,10 +146,13 @@
   }
 
   &__note {
-    color: $color-white;
     text-align: right;
     @include margin-right-vw(15, 15);
     @include margin-top-vw(15, 15);
     @include font-vw(12, 10);
+
+    &.--white {
+      color: $color-white;
+    }
   }
 }
